@@ -1,0 +1,298 @@
+:root {
+          --bg: #0f1720;
+          --surface: #17212b;
+          --card: #f8fafc;
+          --text: #e8eef5;
+          --muted: #9fb0bf;
+          --heading: #fff;
+          --primary: #22c55e;
+          --primary-hover: #16a34a;
+          --border: #2d3d49;
+          --radius: 18px;
+          --shadow: 0 15px 40px rgba(0, 0, 0, .35);
+}
+
+* {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box
+}
+
+html {
+          scroll-behavior: smooth
+}
+
+body {
+          font-family: Inter, sans-serif;
+          background: radial-gradient(circle at top, #18362a, #0f1720 45%, #0b1118);
+          color: var(--text);
+          min-height: 100vh;
+          line-height: 1.6
+}
+
+.header {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem 2rem;
+          background: rgba(15, 23, 32, .7);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(255, 255, 255, .06);
+          position: sticky;
+          top: 0
+}
+
+.header img {
+          width: 68px;
+          height: 68px;
+          border-radius: 50%;
+          background: #fff;
+          padding: 4px
+}
+
+.header h1 {
+          font-size: 2rem
+}
+
+main {
+          width: min(860px, 92%);
+          margin: 3rem auto;
+          display: flex;
+          flex-direction: column;
+          gap: 2rem
+}
+
+.add-ingredient-form {
+          display: flex;
+          gap: 1rem;
+}
+
+.add-ingredient-form input {
+          flex: 1;
+          padding: 1rem 1.2rem;
+          border-radius: 14px;
+          border: 1px solid var(--border);
+          background: var(--surface);
+          color: var(--text);
+          outline: none
+}
+
+.add-ingredient-form input:focus {
+          border-color: var(--primary);
+          box-shadow: 0 0 0 4px rgba(34, 197, 94, .18)
+}
+
+.add-ingredient-form button,
+.recipe-section button,
+.warning button {
+          background: linear-gradient(135deg,
+                              var(--primary),
+                              var(--primary-hover));
+          border: none;
+          color: white;
+          border-radius: 14px;
+          padding: 1rem 1.5rem;
+          font-weight: 700;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.25s ease;
+}
+
+.add-ingredient-form button::before {
+          content: '+ '
+}
+
+.ingredientsOnHand,
+.recipe-section,
+.recipe {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          box-shadow: var(--shadow)
+}
+
+.ingredientsOnHand {
+          padding: 2rem;
+          border-left: 6px solid #facc15;
+}
+
+.ingredientsOnHand h2 {
+          margin-bottom: 1rem
+}
+
+.ingredientsOnHand ul {
+          list-style: none
+}
+
+.ingredientsOnHand li {
+          display: flex;
+          gap: .8rem;
+          padding: .8rem 0;
+          border-bottom: 1px solid rgba(255, 255, 255, .05)
+}
+
+.ingredientsOnHand li::before {
+          content: '🥬'
+}
+
+/* =========================
+   INGREDIENTS CHANGED WARNING
+========================= */
+
+.warning {
+          background: var(--surface);
+          border-left: 6px solid #facc15;
+          border-radius: var(--radius);
+          box-shadow: var(--shadow);
+          padding: 1.75rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 2rem;
+          animation: fadeIn 1s ease;
+}
+
+.warning h2 {
+          font-size: 1.05rem;
+          font-weight: 600;
+          color: var(--text);
+          line-height: 1.6;
+          flex: 1;
+}
+
+.warning button {
+          white-space: nowrap;
+}
+
+.add-ingredient-form button:hover:not(:disabled),
+.recipe-section button:hover:not(:disabled),
+.warning button:hover:not(:disabled) {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+}
+
+.add-ingredient-form button:active:not(:disabled),
+.recipe-section button:active:not(:disabled),
+.warning button:active:not(:disabled) {
+          transform: translateY(0);
+}
+
+.add-ingredient-form button:disabled,
+.recipe-section button:disabled,
+.warning button:disabled {
+          cursor: not-allowed;
+          opacity: 0.65;
+          transform: none;
+}
+
+@media (max-width: 768px) {
+          .warning {
+                    flex-direction: column;
+                    align-items: stretch;
+                    text-align: center;
+          }
+
+          .warning button {
+                    width: 100%;
+          }
+}
+
+.recipe-section {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 2rem;
+          padding: 1.8rem;
+          border-left: 6px solid #facc15;
+}
+
+.recipe-section button,
+.warning button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.6rem;
+}
+
+.spinner {
+          display: inline-flex;
+          flex-shrink: 0;
+          width: 20px;
+          height: 20px;
+          border: 3px solid rgba(255, 255, 255, 0.3);
+          border-top-color: white;
+          border-radius: 50%;
+          animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+          from {
+                    transform: rotate(0deg);
+          }
+
+          to {
+                    transform: rotate(360deg);
+          }
+}
+
+.recipe {
+          padding: 2rem;
+          border-left: 6px solid #facc15;
+          animation: fadeIn 1s ease; 
+}
+
+.recipe h1 {
+          color: #86efac;
+          margin-bottom: 1rem
+}
+
+.recipe h2 {
+          margin: 1.5rem 0 .75rem;
+          border-left: 5px solid var(--primary);
+          padding-left: .75rem
+}
+
+.recipe p {
+          margin-bottom: 1rem
+}
+
+.recipe ul,
+.recipe ol {
+          margin: 1rem 0 1rem 1.5rem
+}
+
+.recipe li {
+          margin-bottom: .5rem
+}
+
+@keyframes fadeIn{
+   from{
+      opacity: 0;
+      transform: translateY(20px);
+   }
+   to{
+      opacity: 1;
+      transform: translateY(0px);
+   }
+}
+
+@media(max-width:768px) {
+          .header {
+                    flex-direction: column
+          }
+
+          .add-ingredient-form {
+                    flex-direction: column
+          }
+
+          .recipe-section {
+                    flex-direction: column;
+                    align-items: flex-start
+          }
+
+          .recipe-section button,
+          .add-ingredient-form button {
+                    width: 100%
+          }
+}
