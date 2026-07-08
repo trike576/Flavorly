@@ -1,3 +1,7 @@
+## 🚀 Live Demo
+
+👉 **https://flavorly-kappa.vercel.app/**
+
 # 🍽️ Flavorly
 
 An AI-powered recipe generator built with **React.js** that transforms your available ingredients into delicious recipes using the Groq API.
